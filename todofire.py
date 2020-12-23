@@ -15,8 +15,12 @@ c.execute('''
 while True:
     opr = input('>> ')
 
-    if opr == 'show':
+    if opr == 'list':
         c.execute('SELECT * FROM todos')
+        print(c.fetchall())
+    if opr == 'show':
+        id = input('Input the todo id: ')
+        c.execute('SELECT * FROM todos WHERE id=?', id)
         print(c.fetchall())
     if opr == 'new':
         name = input('Input the todo name: ')
